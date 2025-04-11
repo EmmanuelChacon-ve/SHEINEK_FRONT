@@ -1,0 +1,90 @@
+ 
+.orders-page-container {
+  margin-top: 80px; 
+  padding: 20px;
+}
+
+.top-button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.add-date-btn {
+  width: 30%;
+  padding: 12px 20px;
+  font-size: 16px;
+  color: #192a56;
+  border: 2px solid #0367A6;
+  border-radius: 12px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.add-date-btn:hover {
+  background-color: #bddef333;
+}
+
+.batch-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.batch-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f7f7f7;
+}
+
+.batch-date {
+  flex: 1;
+}
+
+.button-group-orders {
+  display: flex;
+  gap: 10px;
+}
+
+.insert-btn-orders,
+.delete-btn-orders,
+.view-btn-orders {
+  margin: 0 auto;
+  padding: 6px 12px;
+  font-size: 14px; 
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  white-space: nowrap; 
+}
+
+.insert-btn-orders {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.insert-btn-orders:hover {
+  background-color: #45a049;
+}
+
+.delete-btn-orders {
+  background-color: #ff6b6b;
+  color: white;
+}
+
+.delete-btn-orders:hover {
+  background-color: #ff4d4d;
+}
+
+
+

@@ -1,0 +1,33 @@
+.customers-page-container {
+    padding: 30px 20px;
+    margin-top: 6%;
+    text-align: center;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: center;
+    width: 40%;
+    margin: 0 auto 30px auto; 
+    gap: 20px;
+  }
+  
+  .button-group button {
+    background-color: #192a56;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button-group button:hover {
+    background-color: #273c75;
+  }
+  
+  .button-group .active {
+    background-color: #44bd32;
+  }
+  
