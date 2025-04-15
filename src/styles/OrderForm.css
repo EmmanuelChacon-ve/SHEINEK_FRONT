@@ -63,10 +63,12 @@
   
   button[type="submit"] {
     margin-top: 20px;
-    background-color: #28a745;
+    color: white;
+    border: 2px solid #0367A6;
+    background-color: #192a56;
     font-size: 16px;
   }
   
   button[type="submit"]:hover {
-    background-color: #218838;
+    background-color: #0367A6;
   }

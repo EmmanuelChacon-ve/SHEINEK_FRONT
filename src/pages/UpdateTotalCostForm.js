@@ -47,32 +47,17 @@ const UpdateBatchPage = () => {
           </button>
         </div>
 
-        <h2 className="ver-pedidos-title">Actualizar Valor de la Compra</h2>
+        <form onSubmit={handleUpdate} className="update-form">
+          <h2 className="ver-pedidos-title">Actualizar Valor de la Compra</h2>
 
-        <form onSubmit={handleUpdate} style={{ marginTop: "30px" }}>
           <input
             type="number"
             placeholder="Ingresa el nuevo valor de la compra"
             value={totalCost}
             onChange={(e) => setTotalCost(e.target.value)}
-            style={{
-              padding: "10px",
-              borderRadius: "8px",
-              border: "1px solid #ccc",
-              fontSize: "16px",
-              width: "100%",
-              maxWidth: "400px",
-              marginBottom: "20px",
-              display: "block",
-              marginLeft: "auto",
-              marginRight: "auto",
-            }}
+            className="input-update"
           />
-          <button
-            type="submit"
-            className="add-date-btn"
-            style={{ display: "block", margin: "0 auto" }}
-          >
+          <button type="submit" className="add-btn-update">
             💾 Guardar
           </button>
         </form>
