@@ -11,8 +11,9 @@ const VerPedidosPage = () => {
   const [totalCobrado, setTotalCobrado] = useState(0);
   const [totalRestante, setTotalRestante] = useState(0);
   const [totalAbonado, setTotalAbonado] = useState(0);
-  const [totalComisiones, setTotalComisiones] = useState(0); // Para almacenar el total de comisiones
+  const [totalComisiones, setTotalComisiones] = useState(0);
   const [fecha, setFecha] = useState("");
+  const [totalCost, setTotalCost] = useState(0); // Nuevo estado para valor del carrito
   const navigate = useNavigate();
 
   const formatCurrency = (number) => {
@@ -48,11 +49,14 @@ const VerPedidosPage = () => {
         (sum, order) => sum + Number(order.commission),
         0
       );
-      setTotalComisiones(totalComisiones); // Calcula el total de comisiones
+      setTotalComisiones(totalComisiones);
 
       if (response.data.length > 0) {
         const date = new Date(response.data[0].batch_date).toLocaleDateString();
         setFecha(date);
+
+        // Guardamos el totalCost (valor del carrito)
+        setTotalCost(Number(response.data[0].total_cost));
       }
     } catch (error) {
       console.error("Error al obtener detalles de pedidos:", error);
@@ -89,6 +93,8 @@ const VerPedidosPage = () => {
     }
   };
 
+  const diferencia = totalCobrado - totalCost;
+
   return (
     <div>
       <Header />
@@ -98,7 +104,7 @@ const VerPedidosPage = () => {
             🔙 Volver
           </button>
           <button
-            onClick={() => navigate("/updatebatch/:batchId")}
+            onClick={() => navigate(`/updatebatch/${batchId}`)}
             className="add-date-btn"
           >
             Precio de la compra
@@ -117,7 +123,8 @@ const VerPedidosPage = () => {
                 <th>Total con Comisión</th>
                 <th>Monto Abonado</th>
                 <th>Total Restante</th>
-                <th>Acciones</th>
+                <th>Actualizar</th>
+                <th>Eliminar</th>
               </tr>
             </thead>
             <tbody>
@@ -130,6 +137,16 @@ const VerPedidosPage = () => {
                   <td>{formatCurrency(order.total_with_commission)}</td>
                   <td>{formatCurrency(order.amount_paid)}</td>
                   <td>{formatCurrency(order.remaining_balance)}</td>
+                  <td>
+                    <button
+                      onClick={() =>
+                        navigate(`/updatepedido/${order.order_id}`)
+                      }
+                      className="edit-btn"
+                    >
+                      ✏️ Actualizar
+                    </button>
+                  </td>
                   <td>
                     <button
                       onClick={() =>
@@ -149,8 +166,7 @@ const VerPedidosPage = () => {
           </div>
           <div className="total-summary">
             <strong>Total en Comisiones:</strong>{" "}
-            {formatCurrency(totalComisiones)}{" "}
-            {/* Muestra la suma de las comisiones */}
+            {formatCurrency(totalComisiones)}
           </div>
           <div className="total-summary">
             <strong>Total Restante:</strong> {formatCurrency(totalRestante)}
@@ -158,6 +174,12 @@ const VerPedidosPage = () => {
           <div className="total-summary">
             <strong>Total Cobrado en este pedido:</strong>{" "}
             {formatCurrency(totalCobrado)}
+          </div>
+          <div className="total-summary">
+            <strong>Valor del Carrito:</strong> {formatCurrency(totalCost)}
+          </div>
+          <div className="total-summary">
+            <strong>Diferencial Final:</strong> {formatCurrency(diferencia)}
           </div>
         </div>
       </div>

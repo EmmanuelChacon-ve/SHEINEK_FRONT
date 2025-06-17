@@ -7,6 +7,9 @@ import AgregarFechaPage from "./pages/AgregarFechaPage.js";
 import OrderForm from "./pages/OrderForm.js";
 import VerPedidosPage from "./pages/VerPedidosPage";
 import UpdateTotalCostForm from "./pages/UpdateTotalCostForm.js";
+import UserPage from "./pages/UserPage.js";
+import CapitalPage from "./pages/CapitalPage.js";
+import UpdatePedidoPage from "./pages/UpdatePedidoPage.js";
 function App() {
   return (
     <Router>
@@ -19,6 +22,9 @@ function App() {
         <Route path="/ver-pedidos/:batchId" element={<VerPedidosPage />} />
         <Route path="/updatebatch/:batchId" element={<UpdateTotalCostForm />} />
         <Route path="/agfecha" element={<AgregarFechaPage />} />
+        <Route path="/users" element={<UserPage />} />
+        <Route path="/capital" element={<CapitalPage />} />
+        <Route path="/updatepedido/:orderId" element={<UpdatePedidoPage />} />
       </Routes>
     </Router>
   );

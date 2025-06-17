@@ -7,7 +7,7 @@ const Home = () => {
       <Header />
 
       <section className="main-content" id="home">
-        <h1>Bienvenido a SHEINEK</h1>
+        <h1>Bienvenido a GLOBALSHOP</h1>
       </section>
     </div>
   );

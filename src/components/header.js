@@ -20,7 +20,7 @@ const Header = () => {
     <div className="home-container">
       <header>
         <Link to="/" className="logo">
-          <i className="fas fa-utensils"></i> SHEINEK
+          <i className="fas fa-utensils"></i> GlobalShop
         </Link>
 
         <nav className={`navbar ${menuOpen ? "active" : ""}`}>

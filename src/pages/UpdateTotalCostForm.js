@@ -19,9 +19,8 @@ const UpdateBatchPage = () => {
     }
 
     try {
-      await axios.put("http://localhost:5000/api/orderBatch/totalCost", {
-        batch_id: batchId,
-        total_cost: totalCost,
+      await axios.put(`http://localhost:5000/api/orderBatch/${batchId}`, {
+        total_cost: parseInt(totalCost, 10),
       });
 
       Swal.fire(
