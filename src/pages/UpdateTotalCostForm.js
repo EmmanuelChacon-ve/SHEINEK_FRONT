@@ -4,7 +4,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import Header from "../components/header";
 import "../styles/VerPedidosPage.css";
-
+import API_BASE_URL from "../config/config.js";
 const UpdateBatchPage = () => {
   const [totalCost, setTotalCost] = useState("");
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ const UpdateBatchPage = () => {
     }
 
     try {
-      await axios.put(`http://localhost:5000/api/orderBatch/${batchId}`, {
+      await axios.put(`${API_BASE_URL}/OrderBatch/${batchId}`, {
         total_cost: parseInt(totalCost, 10),
       });
 

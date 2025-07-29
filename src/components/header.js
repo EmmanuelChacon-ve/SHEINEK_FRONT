@@ -19,7 +19,7 @@ const Header = () => {
   return (
     <div className="home-container">
       <header>
-        <Link to="/" className="logo">
+        <Link to="/home" className="logo">
           <i className="fas fa-utensils"></i> GlobalShop
         </Link>
 

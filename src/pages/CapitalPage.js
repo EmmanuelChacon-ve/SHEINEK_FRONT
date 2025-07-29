@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/header.js";
 import "../styles/CapitalPage.css";
+import API_BASE_URL from "../config/config.js";
 
 const CapitalPage = () => {
   const [movements, setMovements] = useState([]);
@@ -21,7 +22,7 @@ const CapitalPage = () => {
 
   const fetchMovements = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/capital");
+      const res = await fetch(`${API_BASE_URL}/capital`);
       const data = await res.json();
       setMovements(data);
     } catch (err) {
@@ -31,7 +32,7 @@ const CapitalPage = () => {
 
   const fetchCurrentCapital = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/capital/actual");
+      const res = await fetch(`${API_BASE_URL}/capital/actual`);
       const data = await res.json();
       setCurrentCapital(data.currentCapital);
     } catch (err) {
@@ -52,7 +53,7 @@ const CapitalPage = () => {
     setError(null);
 
     try {
-      const res = await fetch("http://localhost:5000/api/capital", {
+      const res = await fetch(`${API_BASE_URL}/capital`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

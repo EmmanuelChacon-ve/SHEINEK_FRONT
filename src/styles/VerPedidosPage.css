@@ -88,3 +88,28 @@
     align-items: center;
   }
 
+
+@media (max-width: 768px) {
+  .order-details-table {
+    overflow-x: auto;
+  }
+
+  .order-details-table table {
+    width: 1000px; /* Hace que la tabla tenga un ancho fijo en pantallas pequeñas */
+  }
+
+  .verpedidobtn {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .add-date-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .total-summary {
+    font-size: 16px;
+    text-align: left;
+  }
+}

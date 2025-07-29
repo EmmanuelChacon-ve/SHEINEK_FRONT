@@ -87,4 +87,12 @@
 }
 
 
-
+ @media (max-width: 420px) {
+    .insert-btn-orders,
+.delete-btn-orders,
+.view-btn-orders {
+  
+  font-size: 8px; 
+  
+}
+  }

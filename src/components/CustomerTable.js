@@ -2,14 +2,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../styles/CustomerTable.css";
-
+import API_BASE_URL from "../config/config.js";
 const CustomerTable = () => {
   const [customers, setCustomers] = useState([]);
 
   useEffect(() => {
     const fetchCustomers = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/customers");
+        const response = await axios.get(`${API_BASE_URL}/customers`);
         setCustomers(response.data); // Asegúrate de que el backend devuelva un array
       } catch (error) {
         console.error("Error al obtener los clientes:", error);

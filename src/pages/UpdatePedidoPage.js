@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 import Header from "../components/header";
-
+import API_BASE_URL from "../config/config.js";
 const UpdatePedidoPage = () => {
   const { orderId } = useParams();
   const navigate = useNavigate();
@@ -13,9 +13,7 @@ const UpdatePedidoPage = () => {
   useEffect(() => {
     const fetchPedido = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:5000/api/orders/${orderId}`
-        );
+        const response = await axios.get(`${API_BASE_URL}/orders/${orderId}`);
         setPedido(response.data);
         setAbonado(response.data.amount_paid);
       } catch (error) {
@@ -31,7 +29,8 @@ const UpdatePedidoPage = () => {
 
     try {
       await axios.put(
-        `http://localhost:5000/api/orders/${orderId}/amount-paid`,
+        `${API_BASE_URL}/orders/${orderId}/amount-paid`,
+
         {
           amount_paid: Number(abonado),
         }

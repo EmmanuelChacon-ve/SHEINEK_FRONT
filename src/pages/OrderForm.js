@@ -5,7 +5,7 @@ import Header from "../components/header";
 import { useParams } from "react-router-dom";
 import BackButton from "../components/BackButton";
 import "../styles/OrderForm.css";
-
+import API_BASE_URL from "../config/config.js";
 const OrderForm = () => {
   const { batchId } = useParams();
 
@@ -21,7 +21,7 @@ const OrderForm = () => {
   useEffect(() => {
     const fetchCustomers = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/customers");
+        const response = await axios.get(`${API_BASE_URL}/customers`);
         setCustomers(response.data);
       } catch (error) {
         console.error("Error al obtener los clientes", error);
@@ -86,10 +86,7 @@ const OrderForm = () => {
         amount_paid: parseToNumber(formData.amount_paid),
       };
 
-      const response = await axios.post(
-        "http://localhost:5000/api/orders",
-        payload
-      );
+      const response = await axios.post(`${API_BASE_URL}/orders`, payload);
 
       Swal.fire({
         icon: "success",

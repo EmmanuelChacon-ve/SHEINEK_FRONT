@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../components/header.js"; // Ajusta la ruta si está en otro lugar
 import "../styles/home.css";
+
 const Home = () => {
   return (
     <div>

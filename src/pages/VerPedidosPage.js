@@ -4,7 +4,7 @@ import Header from "../components/header";
 import axios from "axios";
 import Swal from "sweetalert2";
 import "../styles/VerPedidosPage.css";
-
+import API_BASE_URL from "../config/config.js";
 const VerPedidosPage = () => {
   const { batchId } = useParams();
   const [orderDetails, setOrderDetails] = useState([]);
@@ -23,7 +23,7 @@ const VerPedidosPage = () => {
   const fetchPedidos = useCallback(async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/orders/details/${batchId}`
+        `${API_BASE_URL}/orders/details/${batchId}`
       );
       setOrderDetails(response.data);
 
@@ -81,9 +81,7 @@ const VerPedidosPage = () => {
 
     if (confirm.isConfirmed) {
       try {
-        await axios.delete(
-          `http://localhost:5000/api/orders/${order_id}/${batch_id}`
-        );
+        await axios.delete(`${API_BASE_URL}/orders/${order_id}/${batch_id}`);
         Swal.fire("¡Eliminado!", "El pedido ha sido eliminado.", "success");
         fetchPedidos(); // Actualiza la tabla
       } catch (error) {

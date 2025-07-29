@@ -4,7 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import "../styles/AgregarFechaPage.css"; // (opcional) para estilos personalizados
-
+import API_BASE_URL from "../config/config.js";
 const AgregarFechaPage = () => {
   const [batchDate, setBatchDate] = useState("");
   const [error, setError] = useState("");
@@ -23,7 +23,7 @@ const AgregarFechaPage = () => {
     }
 
     try {
-      await axios.post("http://localhost:5000/api/orderBatch", {
+      await axios.post(`${API_BASE_URL}/orderBatch`, {
         batch_date: batchDate,
       });
       Swal.fire({

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Swal from "sweetalert2";
 import axios from "axios";
 import "../styles/CustomerForm.css";
-
+import API_BASE_URL from "../config/config.js";
 const CustomerForm = () => {
   const [formData, setFormData] = useState({
     first_name: "",
@@ -20,10 +20,7 @@ const CustomerForm = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/customers",
-        formData
-      );
+      const response = await axios.post(`${API_BASE_URL}/customers`, formData);
 
       Swal.fire({
         icon: "success",

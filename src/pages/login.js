@@ -3,6 +3,7 @@ import "../styles/login.css"; // Importamos los estilos del login
 import { useNavigate } from "react-router-dom"; // Importamos useNavigate para la navegación programada
 import axios from "axios"; // Importamos Axios para hacer solicitudes HTTP
 import Swal from "sweetalert2";
+import API_BASE_URL from "../config/config.js"; // Importamos la URL base de la API
 const Login = () => {
   // Definimos los estados para almacenar el correo, la contraseña y los posibles errores
   const [email, setEmail] = useState("");
@@ -15,7 +16,7 @@ const Login = () => {
     e.preventDefault(); // Evita que la página se recargue al enviar el formulario
 
     try {
-      const response = await axios.post("http://localhost:5000/api/login", {
+      const response = await axios.post(`${API_BASE_URL}/login`, {
         email,
         password,
       });
