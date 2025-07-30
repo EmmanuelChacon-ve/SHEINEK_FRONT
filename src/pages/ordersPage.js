@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 import "../styles/OrdersPage.css";
-
+import API_BASE_URL from "../config/config.js";
 const Orders = () => {
   const [batches, setBatches] = useState([]);
   const navigate = useNavigate();
@@ -13,9 +13,7 @@ const Orders = () => {
   useEffect(() => {
     const fetchBatches = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:5000/api/orderBatch"
-        );
+        const response = await axios.get(`${API_BASE_URL}/orderBatch`);
         setBatches(response.data);
       } catch (error) {
         console.error("Error al obtener las fechas de pedidos:", error);
@@ -38,7 +36,7 @@ const Orders = () => {
       });
 
       if (result.isConfirmed) {
-        await axios.delete(`http://localhost:5000/api/orderBatch/${id}`);
+        await axios.delete(`${API_BASE_URL}/orderBatch/${id}`);
         setBatches(batches.filter((batch) => batch.id !== id));
 
         Swal.fire({
