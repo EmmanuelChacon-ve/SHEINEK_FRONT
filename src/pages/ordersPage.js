@@ -6,6 +6,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import "../styles/OrdersPage.css";
 import API_BASE_URL from "../config/config.js";
+
 const Orders = () => {
   const [batches, setBatches] = useState([]);
   const navigate = useNavigate();
@@ -65,6 +66,12 @@ const Orders = () => {
     navigate(`/ver-pedidos/${batchId}`);
   };
 
+  // ✅ Función para mostrar fecha correctamente sin que JS aplique zona horaria
+  const formatDate = (dateString) => {
+    const [year, month, day] = dateString.split("T")[0].split("-");
+    return `${day}/${month}/${year}`;
+  };
+
   return (
     <div>
       <Header />
@@ -79,9 +86,7 @@ const Orders = () => {
         <div className="batch-list">
           {batches.map((batch) => (
             <div key={batch.id} className="batch-card">
-              <span className="batch-date">
-                {new Date(batch.batch_date).toLocaleDateString()}
-              </span>
+              <span className="batch-date">{formatDate(batch.batch_date)}</span>
               <div className="button-group-orders">
                 <button
                   onClick={() => handleShowOrders(batch.id)}
@@ -95,7 +100,6 @@ const Orders = () => {
                 >
                   📥 Insertar Orden
                 </button>
-
                 <button
                   onClick={() => handleDelete(batch.id)}
                   className="delete-btn-orders"
